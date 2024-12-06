@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CỬA HÀNG THỜI TRANG A LONG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>CỬA HÀNG THỜI TRANG A LONG</h1>
+    </header>
+
+    <main>
+        <section class="content">
+            <!-- Form nhập số đo -->
+            <div class="form-container">
+                <h2>Nhập số đo của bạn</h2>
+                <form id="sizeForm">
+                    <label for="height">Chiều cao (cm):</label>
+                    <input type="number" id="height" name="height" required>
+
+                    <label for="weight">Cân nặng (kg):</label>
+                    <input type="number" id="weight" name="weight" required>
+
+                    <label for="waist">Vòng eo (cm):</label>
+                    <input type="number" id="waist" name="waist" required>
+
+                    <label for="legLength">Độ dài chân (cm):</label>
+                    <input type="number" id="legLength" name="legLength" required>
+
+                    <button type="button" onclick="calculateSize()">Tính size</button>
+                </form>
+                <p id="result"></p>
+            </div>
+
+            <!-- Bảng size quần và áo -->
+            <div class="size-tables">
+                <h2>Bảng size quần & áo</h2>
+                <div class="tables">
+                    <!-- Bảng size áo -->
+                    <div class="table">
+                        <h3>Size Áo</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Dài áo (cm)</th>
+                                    <th>Ngực (cm)</th>
+                                    <th>Cân nặng (kg)</th>
+                                    <th>Chiều cao (cm)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>S</td>
+                                    <td>63-67</td>
+                                    <td>92-100</td>
+                                    <td>50-60</td>
+                                    <td>160-167</td>
+                                </tr>
+                                <tr>
+                                    <td>M</td>
+                                    <td>65-69</td>
+                                    <td>96-104</td>
+                                    <td>55-65</td>
+                                    <td>163-170</td>
+                                </tr>
+                                <tr>
+                                    <td>L</td>
+                                    <td>67-71</td>
+                                    <td>100-108</td>
+                                    <td>65-75</td>
+                                    <td>165-172</td>
+                                </tr>
+                                <tr>
+                                    <td>XL</td>
+                                    <td>69-73</td>
+                                    <td>104-112</td>
+                                    <td>75-90</td>
+                                    <td>170-180</td>
+                                </tr>
+                                <tr>
+                                    <td>XLL</td>
+                                    <td>70-75</td>
+                                    <td>106-114</td>
+                                    <td>85-100</td>
+                                    <td>170-190</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bảng size quần -->
+                    <div class="table">
+                        <h3>Size Quần</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Kích cỡ (inches)</th>
+                                    <th>Vòng eo (cm)</th>
+                                    <th>Chiều dài chân (cm)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>26 (S)</td>
+                                    <td>68</td>
+                                    <td>81</td>
+                                </tr>
+                                <tr>
+                                    <td>27 (S)</td>
+                                    <td>70</td>
+                                    <td>81</td>
+                                </tr>
+                                <tr>
+                                    <td>28 (S)</td>
+                                    <td>72</td>
+                                    <td>82</td>
+                                </tr>
+                                <tr>
+                                    <td>29 (M)</td>
+                                    <td>74</td>
+                                    <td>82</td>
+                                </tr>
+                                <tr>
+                                    <td>30 (M)</td>
+                                    <td>76</td>
+                                    <td>83</td>
+                                </tr>
+                                <tr>
+                                    <td>31 (M)</td>
+                                    <td>78</td>
+                                    <td>83</td>
+                                </tr>
+                                <tr>
+                                    <td>32 (L)</td>
+                                    <td>82</td>
+                                    <td>84</td>
+                                </tr>
+                                <tr>
+                                    <td>33 (L)</td>
+                                    <td>84</td>
+                                    <td>84</td>
+                                </tr>
+                                <tr>
+                                    <td>34 (XL)</td>
+                                    <td>87</td>
+                                    <td>85</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    function calculateSize() {
+        const height = document.getElementById('height').value;
+        const weight = document.getElementById('weight').value;
+        const waist = document.getElementById('waist').value;
+        const legLength = document.getElementById('legLength').value;
+
+        let shirtSize = "";
+        let pantsSize = "";
+
+        // Xác định size áo
+        if (height >= 160 && height <= 167 && weight >= 50 && weight <= 60) {
+            shirtSize = "S";
+        } else if (height >= 163 && height <= 170 && weight >= 55 && weight <= 65) {
+            shirtSize = "M";
+        } else if (height >= 165 && height <= 172 && weight >= 65 && weight <= 75) {
+            shirtSize = "L";
+        } else if (height >= 170 && height <= 180 && weight >= 75 && weight <= 90) {
+            shirtSize = "XL";
+        } else if (height >= 170 && height <= 190 && weight >= 85 && weight <= 100) {
+            shirtSize = "XLL";
+        } else {
+            shirtSize = "Không xác định (hãy kiểm tra lại số đo)";
+        }
+
+        // Xác định size quần
+        if (waist >= 68 && waist <= 72 && legLength <= 82) {
+            pantsSize = "S (26-28)";
+        } else if (waist >= 74 && waist <= 78 && legLength <= 83) {
+            pantsSize = "M (29-31)";
+        } else if (waist >= 82 && waist <= 84 && legLength <= 84) {
+            pantsSize = "L (32-33)";
+        } else if (waist >= 87 && legLength <= 85) {
+            pantsSize = "XL (34)";
+        } else {
+            pantsSize = "Không xác định (hãy kiểm tra lại số đo)";
+        }
+
+        document.getElementById('result').innerText = `Size áo của bạn: ${shirtSize}\nSize quần của bạn: ${pantsSize}`;
+    }
+</script>
+</html>
